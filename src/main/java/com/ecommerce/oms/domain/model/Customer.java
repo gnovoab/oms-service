@@ -2,15 +2,26 @@
 //Namespace
 package com.ecommerce.oms.domain.model;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 /**
  * Class that represents customer entity
  */
 public class Customer {
     private Long id;
-    private String title;
-    private String firstName;
-    private String lastName;
+
+    @NotBlank private String title;
+    @NotBlank private String firstName;
+    @NotBlank private String lastName;
+
+
+    @Email
     private String email;
+
+    @Size(min = 8, max = 12)
+    @NotBlank
     private String telephone;
 
     //Getters and Setters

@@ -7,6 +7,7 @@ import com.ecommerce.oms.domain.api.ApiErrorResponse;
 import com.ecommerce.oms.domain.api.ApiMessageResponse;
 import com.ecommerce.oms.domain.model.Order;
 import com.ecommerce.oms.service.OrderService;
+import com.ecommerce.oms.service.ValidatorService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -32,6 +33,9 @@ public class OrderController {
     //Fields
     @Autowired
     private transient OrderService orderService;
+
+    @Autowired
+    private transient ValidatorService validatorService;
 
     /**
      * Fetch orders
@@ -89,6 +93,11 @@ public class OrderController {
     })
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<Order> createOrder(@RequestBody @Valid Order orders) {
+
+        //Validate entities
+        orders.getProducts().forEach(product -> validatorService.validate(product));
+        validatorService.validate(orders.getCustomer());
+        validatorService.validate(orders.getDeliveryAddress());
 
         //Create order
         Order orderCreated = orderService.save(orders);

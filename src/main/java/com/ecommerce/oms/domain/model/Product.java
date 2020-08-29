@@ -3,6 +3,9 @@
 package com.ecommerce.oms.domain.model;
 
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
 /**
  * Class that represents a product entity
  */
@@ -10,10 +13,11 @@ public class Product {
 
     //Fields
     private Long id;
-    private String sku;
-    private String name;
-    private Double price;
-    private Integer quantity;
+
+    @NotBlank private String sku;
+    @NotBlank private String name;
+    @NotNull  private Double price;
+    @NotNull private Integer quantity;
 
 
     //Getters and Setters

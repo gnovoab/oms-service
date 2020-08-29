@@ -39,7 +39,7 @@ public class Order {
     @SequenceGenerator(name = "order_id_generator", sequenceName = "order_id_seq", allocationSize = 1)
     private Long id;
 
-    @Column(unique = true)
+    @Column(unique = true, updatable = false)
     private String reference = RandomStringUtils.randomAlphanumeric(12).toLowerCase();
 
     @Type(type = "jsonb")

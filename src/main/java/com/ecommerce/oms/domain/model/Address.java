@@ -2,6 +2,9 @@
 //Namespace
 package com.ecommerce.oms.domain.model;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
 /**
  * Class that represents address entity
  */
@@ -9,12 +12,16 @@ public class Address {
 
     //Fields
     private Long id;
-    private String line1;
-    private String line2;
-    private String line3;
+    @NotBlank private String line1;
+    @NotBlank private String line2;
+    @NotBlank private String line3;
+
+    @Size(min = 6, max = 8)
+    @NotBlank
     private String postcode;
-    private String county;
-    private String city;
+
+    @NotBlank private String county;
+    @NotBlank private String city;
 
 
     //Getters and Setters
