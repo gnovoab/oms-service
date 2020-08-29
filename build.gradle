@@ -14,7 +14,7 @@ repositories {
 
 //Settings
 bootJar {
-	archiveFileName = 'catalog-service.jar'
+	archiveFileName = 'order-management-service.jar'
 }
 
 group = 'com.ecommerce'
