@@ -22,7 +22,7 @@ sourceCompatibility = JavaVersion.VERSION_14
 targetCompatibility = JavaVersion.VERSION_14
 
 ext {
-	set('springCloudVersion', "Hoxton.SR7")
+	set('springCloudVersion', "Hoxton.SR8")
 }
 
 //dependencyManagement {
